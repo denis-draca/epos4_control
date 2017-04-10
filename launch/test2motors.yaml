@@ -1,0 +1,81 @@
+# Time in seconds
+# Current in amps
+# position, velocity, and acceleration in device units
+
+#########################################################
+
+SL_Back_Left_actuator:
+  joint_name: 'SL_Back_Left'
+  actuator_name: 'SL_Back_Left_actuator'
+  serial_number: '682136000387' #'682136000573'
+  operation_mode: 'profile_position'
+  clear_faults: true
+  torque_constant: 9.569
+
+  motor:
+    type: 11
+    ec_motor:
+      nominal_current: 1.6
+      max_output_current: 3 
+      thermal_time_constant: 2.6
+      number_of_pole_pairs: 1
+
+  sensor:
+    type: 3
+    incremental_encoder:
+      resolution: 500
+      inverted_polarity: false
+
+  safety:
+    max_following_error: 2000
+    max_profile_velocity: 12000
+    max_acceleration: 40000
+
+  position_profile:
+    velocity: 5000
+    acceleration: 10000
+    deceleration: 10000
+
+  velocity_profile:
+    acceleration: 10000
+    deceleration: 10000
+
+#########################################################
+
+SL_Back_Right_actuator:
+  joint_name: 'SL_Back_Right'
+  actuator_name: 'SL_Back_Right_actuator'
+  serial_number: '682136000292' #'682136000356'
+  operation_mode: 'profile_position'
+  clear_faults: true
+  torque_constant: 9.569
+
+  motor:
+    type: 11
+    ec_motor:
+      nominal_current: 1.6
+      max_output_current: 3 
+      thermal_time_constant: 2.6
+      number_of_pole_pairs: 1
+
+  sensor:
+    type: 3
+    incremental_encoder:
+      resolution: 500
+      inverted_polarity: false
+
+  safety:
+    max_following_error: 2000
+    max_profile_velocity: 12000
+    max_acceleration: 40000
+
+  position_profile:
+    velocity: 5000
+    acceleration: 10000
+    deceleration: 10000
+
+  velocity_profile:
+    acceleration: 10000
+    deceleration: 10000
+
+#########################################################

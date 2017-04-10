@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot name="onemotor">
+  <link name="link1">
+    <!--inertial>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial-->
+  </link>
+  <link name="link2">
+    <!--inertial>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial-->
+  </link>
+
+  <joint name="SL_Back_Left" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <limit effort="70000" lower="-2000" upper="2000" velocity="1"/>
+    <!--limit effort="70000" lower="-3.14" upper="3.14" velocity="1"/-->
+  </joint>
+  <transmission name="SL_Back_Left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="SL_Back_Left">
+      <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="SL_Back_Left_actuator">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1000</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</robot>

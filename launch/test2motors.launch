@@ -1,0 +1,33 @@
+<launch>
+  <param name="robot_description" textfile="$(find epos4_control)/launch/test2motors.urdf" />
+  <node name="epos4_control" pkg="epos4_control" type="epos4_control_node" args="SL_Back_Left_actuator SL_Back_Right_actuator" output="screen">
+    <rosparam command="load" file="$(find epos4_control)/launch/test2motors.yaml" />
+  </node>
+<!--
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" args="joint1_position_controller
+			      joint2_position_controller"/>
+
+  <param name="joint1_position_controller/type" value="position_controllers/JointPositionController" />
+  <param name="joint1_position_controller/joint" value="SL_Back_Left" />
+
+  <param name="joint2_position_controller/type" value="position_controllers/JointPositionController" />
+  <param name="joint2_position_controller/joint" value="SL_Back_Right" />
+
+  <param name="joint_state_controller/type" value="joint_state_controller/JointStateController" />
+  <param name="joint_state_controller/publish_rate" value="50" />
+--> 
+
+  
+  <rosparam file="$(find epos4_control)/launch/test2motors_traj_control.yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/" args="/SL_Back/joint_trajectory_controller
+			             /SL_Back/joint_state_controller"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+        <remap from="/joint_states" to="/SL_Back/joint_states" />
+  </node>
+
+</launch>

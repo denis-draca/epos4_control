@@ -1,0 +1,23 @@
+onemotor:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  # Trajectory Controllers ---------------------------------------
+  joint_trajectory_controller:
+#    type: effort_controllers/JointTrajectoryController
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - SL_Back_Left
+
+#    constraints:
+#      goal_time: 0.5                   # Override default
+#      stopped_velocity_tolerance: 0.02 # Override default
+#      SL_Back_Left:
+#        trajectory: 0.05               # Not enforced if unspecified
+#        goal: 0.02                     # Not enforced if unspecified
+
+#    gains: # Required because we're controlling an effort interface
+#      SL_Back_Left: {p: 100,  d: 1, i: 1, i_clamp: 1}
+
